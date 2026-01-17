@@ -1,16 +1,15 @@
 {
-  "name": "backend",
+  "name": "mobilestoreapp",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "npm run start --prefix backend"
+
   },
-  "dependencies": {
-    "dotenv": "^17.2.1",
-    "ejs": "^3.1.10",
-    "express": "^5.1.0",
-    "mongodb": "^6.18.0",
-    "mongoose": "^8.17.1",
-    "multer": "^2.0.2"
-  }
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+
+  "description": ""
 }
