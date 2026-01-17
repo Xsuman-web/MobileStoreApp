@@ -25,6 +25,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views")); // 👈 FIX
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -119,3 +120,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
