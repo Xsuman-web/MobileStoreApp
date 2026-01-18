@@ -1,25 +1,18 @@
 const imageInput = document.getElementById("image");
-const preview = document.getElementById("preview");
 const submitBtn = document.getElementById("submitBtn");
+const preview = document.getElementById("preview");
 
-imageInput.addEventListener("change", function () {
-  const file = this.files[0];
+if (imageInput) {
+  imageInput.addEventListener("change", () => {
+    const file = imageInput.files[0];
+    if (!file) return;
 
-  if (file) {
-    // Preview set karna
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      preview.src = e.target.result;
-      preview.classList.remove("hidden");
-    };
-    reader.readAsDataURL(file);
+    // preview
+    preview.src = URL.createObjectURL(file);
+    preview.classList.remove("hidden");
 
-    // Button enable
+    // enable submit
     submitBtn.disabled = false;
     submitBtn.classList.remove("opacity-50", "cursor-not-allowed");
-  } else {
-    preview.classList.add("hidden");
-    submitBtn.disabled = true;
-    submitBtn.classList.add("opacity-50", "cursor-not-allowed");
-  }
-});
+  });
+}
