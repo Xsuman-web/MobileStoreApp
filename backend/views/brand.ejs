@@ -29,12 +29,12 @@
         <% products.forEach((product) => { %>
 
         <div class="bg-zinc-800 rounded-xl overflow-hidden shadow-lg">
-<img
-  src="<%= product.image.url %>"
-  alt="<%= product.name %>"
-  class="w-full h-52 object-contain"
-/>
-
+          <!-- CARD IMAGE -->
+          <img
+            src="<%= product.image.url %>"
+            alt="<%= product.name %>"
+            class="w-full h-52 object-contain bg-black"
+          />
 
           <div class="p-4">
             <h3 class="text-lg font-semibold">
@@ -50,18 +50,17 @@
                 ₹<%= product.price %>
               </span>
 
-              <!-- OPEN BUTTON -->
-       <button
-          class="text-blue-400 text-sm hover:underline"
-          data-name="<%= product.name %>"
-          data-desc="<%= product.description %>"
-          data-price="<%= product.price %>"
-          data-img="/images/<%= product.image %>"
-          onclick="openModal(this)"
-        >
-          Open
-      </button>
-
+              <!-- ✅ FIXED OPEN BUTTON -->
+              <button
+                class="text-blue-400 text-sm hover:underline"
+                data-name="<%= product.name %>"
+                data-desc="<%= product.description %>"
+                data-price="<%= product.price %>"
+                data-img="<%= product.image.url %>"
+                onclick="openModal(this)"
+              >
+                Open
+              </button>
             </div>
           </div>
         </div>
@@ -91,7 +90,7 @@
           ✕
         </button>
 
-        <!-- IMAGE -->
+        <!-- MODAL IMAGE -->
         <img
           id="modalImage"
           class="w-full h-56 object-contain bg-black rounded-lg"
@@ -100,7 +99,6 @@
         <!-- DETAILS -->
         <h2 id="modalName" class="text-2xl font-bold mt-4"></h2>
         <p id="modalDesc" class="text-zinc-400 mt-2"></p>
-
         <p id="modalPrice" class="text-green-400 font-bold text-xl mt-4"></p>
 
         <!-- TELEGRAM -->
@@ -116,54 +114,48 @@
     </div>
 
     <!-- FOOTER -->
-<footer class="border-t border-zinc-800 py-8 text-center text-zinc-500 text-sm">
-  <div class="flex flex-col items-center gap-2">
-    <p>
-      © <%= new Date().getFullYear() %> MobileStore • Premium UI
-    </p>
+    <footer class="border-t border-zinc-800 py-8 text-center text-zinc-500 text-sm">
+      <div class="flex flex-col items-center gap-2">
+        <p>
+          © <%= new Date().getFullYear() %> MobileStore • Premium UI
+        </p>
 
-    <p class="text-zinc-400">
-      Built by
-      <a
-        href="https://github.com/Nakul-Shakya"
-        target="_blank"
-        class="text-blue-400 hover:underline font-medium"
-      >
-        Nakul Shakya
-      </a>
-    </p>
-  </div>
-</footer>
+        <p class="text-zinc-400">
+          Built by
+          <a
+            href="https://github.com/Nakul-Shakya"
+            target="_blank"
+            class="text-blue-400 hover:underline font-medium"
+          >
+            Nakul Shakya
+          </a>
+        </p>
+      </div>
+    </footer>
 
     <!-- SCRIPT -->
-<script>
-  function openModal(btn) {
-    document.getElementById("modalName").innerText = btn.dataset.name;
-    document.getElementById("modalDesc").innerText = btn.dataset.desc;
-    document.getElementById("modalPrice").innerText = "₹" + btn.dataset.price;
-    document.getElementById("modalImage").src = btn.dataset.img;
+    <script>
+      function openModal(btn) {
+        document.getElementById("modalName").innerText = btn.dataset.name;
+        document.getElementById("modalDesc").innerText = btn.dataset.desc;
+        document.getElementById("modalPrice").innerText = "₹" + btn.dataset.price;
+        document.getElementById("modalImage").src = btn.dataset.img;
 
-    // ✅ Auto-filled professional Telegram message
-    const message = `Hello Nakul Sir,
+        const message = `Hello Nakul Sir,
 I would like to get a professional website developed.
 Please let me know how we can proceed.`;
 
-    const encodedMessage = encodeURIComponent(message);
+        document.getElementById("telegramLink").href =
+          `https://t.me/DevNakulLap?text=${encodeURIComponent(message)}`;
 
-    document.getElementById("telegramLink").href =
-      `https://t.me/DevNakulLap?text=${encodedMessage}`;
+        document.getElementById("productModal").classList.remove("hidden");
+        document.getElementById("productModal").classList.add("flex");
+      }
 
-    document.getElementById("productModal").classList.remove("hidden");
-    document.getElementById("productModal").classList.add("flex");
-  }
-
-  function closeModal() {
-    document.getElementById("productModal").classList.add("hidden");
-  }
-</script>
-
-</script>
-
+      function closeModal() {
+        document.getElementById("productModal").classList.add("hidden");
+      }
+    </script>
 
   </body>
 </html>
