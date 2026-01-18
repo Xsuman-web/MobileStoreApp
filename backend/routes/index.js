@@ -109,16 +109,16 @@ router.get("/brands", (req, res) => {
   res.render("brands");
 });
 
-router.get("/product-detail", (req, res) => {
-  res.render("product-detail");
-});
+// router.get("/product-detail", (req, res) => {
+//   res.render("product-detail");
+// });
 
-router.get("/about", (req, res) => {
-  res.render("about");
-});
+// router.get("/about", (req, res) => {
+//   res.render("about");
+// });
 
-router.get("/contact", (req, res) => {
-  res.render("contact");
-});
+// router.get("/contact", (req, res) => {
+//   res.render("contact");
+// });
 
 export default router;
