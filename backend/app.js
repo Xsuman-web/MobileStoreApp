@@ -98,7 +98,7 @@ app.post("/update/:id", upload.single("imageFile"), async (req, res) => {
     };
 
     if (req.file) {
-      updateData.image = `/uploads/${req.file.filename}`; // <-- change here
+      updateData.image = req.file.filename; // ✅ FIX
     }
 
     await productModel.findByIdAndUpdate(req.params.id, updateData);
@@ -108,6 +108,7 @@ app.post("/update/:id", upload.single("imageFile"), async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
+
 
 app.get("/delete/:id", async (req, res) => {
   await productModel.findByIdAndDelete(req.params.id);
