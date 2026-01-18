@@ -141,11 +141,12 @@
           </label>
 
           <!-- Image Preview -->
-<img
-  src="<%= product.image.url %>"
-  alt="<%= product.name %>"
-  class="w-full h-52 object-contain"
-/>
+          <img
+            id="preview"
+            class="mt-4 max-h-40 rounded-lg hidden"
+            alt="Preview"
+          />
+        </div>
 
         </div>
 
@@ -183,3 +184,4 @@
     <script src="/javascripts/script.js"></script>
   </body>
 </html>
+
